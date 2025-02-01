@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap'); 
+
+* {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Contenedor principal con resolución fija 1920x1080 */
+.container {
+    width: 1920px;
+    height: 1080px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Fondo con GIF y opacidad */
+body {
+    color: azure;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;  /* Fondo negro */
+    background-image: url('https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2k3djV2cHJxbWgzc2FuZDhjZWlobm0xeDd0NGxwZ3hrcTI2M2FyOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/oAWgQXd9XCGTyEN3p4/giphy.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+/* Capa semitransparente sobre el fondo */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fondo negro con opacidad */
+    z-index: -1;
+}
+
+/* Estilo para la animación de las letras */
+.greetings {
+    font-size: 6rem;
+    font-weight: 900;
+}
+
+.greetings > span {
+    animation: glow 2.5s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0%, 100% {
+        color: #fff;
+        text-shadow: 0 0 12px #9400D3, 0 0 50px #9400D3, 0 0 100px #9400D3;
+    }
+    10%, 90% {
+        color: #696565;
+        text-shadow: none;
+    }
+}
+
+.greetings > span:nth-child(2) { animation-delay: .2s; }
+.greetings > span:nth-child(3) { animation-delay: .4s; }
+.greetings > span:nth-child(4) { animation-delay: .6s; }
+.greetings > span:nth-child(5) { animation-delay: .8s; }
+
+.description {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #fbff00;
+}
+
+/* Estilo para el botón */
+.button button {
+    background-color: #FFC0CB;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Estilo para el enlace dentro del botón */
+.button button a {
+    text-decoration: none;
+    color: #fd89ff;
+    font-weight: bold;
+    display: block;
+}
+
+/* Efecto de resplandor al pasar el cursor sobre el botón */
+.button button:hover {
+    background-color: #fe9eaf;
+    box-shadow: 0 0 10px #FFC0CB, 0 0 20px #FFC0CB, 0 0 30px #FFC0CB;
+}
+
+/* Responsividad */
+@media screen and (max-width: 574px) {
+    .greetings {
+        font-size: 3rem;
+        font-weight: 500;
+        text-align: center;
+    }
+
+    .description {
+        font-size: 1rem;
+    }
+
+    .button button {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+}
+
+/* Estilos para el mensaje final */
+h1 {
+    font-size: 2.5rem;
+    color: #d81b60;
+}
+
+/* Botones de opción */
+.buttons {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+button {
+    font-size: 1.5rem;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+#yes {
+    background-color: #ff4081;
+    color: white;
+}
+
+#yes:hover {
+    background-color: #d81b60;
+}
+
+#no {
+    background-color: #f8bbd0;
+    color: #880e4f;
+    position: relative;
+}
+
+/* Mensaje final */
+#message {
+    font-size: 2rem;
+    color: #880e4f;
+    margin-top: 20px;
+    display: none;
+}
+
+/* Estilos para la animación de la carta */
+.letter-container {
+    position: relative;
+    width: 200px;
+    height: 150px;
+    margin-top: 30px;
+    display: none;
+}
+
+.letter {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.letter p {
+    font-size: 1.2rem;
+    color: #d81b60;
+    transform: translateY(100%);
+    transition: transform 1s ease-in-out;
+}
+
+.letter-container.open .letter p {
+    transform: translateY(0);
+}
